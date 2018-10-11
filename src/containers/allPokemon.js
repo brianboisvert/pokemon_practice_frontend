@@ -3,16 +3,10 @@ import Individual from './individual';
 
 class AllPokemon extends React.Component {
 
-  componentDidMount() {
-    fetch('http://localhost:3000/all_pokemons/')
-      .then(res => res.json())
-      .then(data => this.setState(data));
-  }
-
   render() {
-    const individual = this.state && this.state.results ? this.state.results.slice(0, 50).map((poke, i) => {
-      return (<Individual poke={poke} key={i} />)
-    }) : undefined
+    const individual = this.props.allPokemon.results.slice(0, 50).map((poke, i) => {
+      return (<Individual poke={poke} key={i} findTypes={this.props.findTypes} />)
+    })
 
     return (
       <div>

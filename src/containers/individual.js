@@ -3,7 +3,8 @@ import React from 'react';
 class Individual extends React.Component {
   state = {
     name: '',
-    image: ''
+    image: '',
+    type: []
   }
 
   componentDidMount() {
@@ -11,10 +12,14 @@ class Individual extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         name: data.name,
-        image: data.sprites["front_default"]
+        image: data.sprites["front_default"],
+        type: data.types
+      }, () => {
+        this.props.findTypes(data.types)
       })
     );
   }
+
 
   render() {
     return (
