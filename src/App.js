@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import AllPokemon from './containers/allPokemon';
-import Search from './components/search';
+import Search from './containers/search';
 import BeginButton from './components/beginButton';
 
 class App extends Component {
@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     allPokemon: [],
     showPokemon: false,
-    types: []
+    types: [],
+    selectedTypes: []
   }
 
   componentDidMount() {
@@ -33,13 +34,19 @@ class App extends Component {
     })
   }
 
+  selectedTypes(types) {
+    this.setState({
+      selectedTypes: types
+    })
+  }
+
   render() {
     return (
       <div>
         <div className="header">
-          <img className="logo" src="/logo.png" />
+          <img className="logo" src="/logo.png" alt="pokemon logo" />
           <BeginButton showPokemon={this.showPokemon.bind(this)} />
-          {this.state.showPokemon ? <Search allPokemon={this.state.allPokemon} types={this.state.types} /> : null }
+          {this.state.showPokemon ? <Search allPokemon={this.state.allPokemon} types={this.state.types} selectedTypes={this.state.selectedTypes} /> : null }
         </div>
         {this.state.showPokemon ? <AllPokemon allPokemon={this.state.allPokemon} findTypes={this.findTypes.bind(this)} /> : null }
       </div>

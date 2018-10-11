@@ -10,7 +10,7 @@ class AllPokemon extends React.Component {
 
     return (
       <div>
-        <div>
+        <div className="grid-container">
           {individual}
         </div>
       </div>

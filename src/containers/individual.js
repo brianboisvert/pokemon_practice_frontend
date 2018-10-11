@@ -24,7 +24,7 @@ class Individual extends React.Component {
   render() {
     return (
       <div>
-        <img src={this.state.image} />
+        <img src={this.state.image} alt="loading..."/>
       </div>
     )
   }
