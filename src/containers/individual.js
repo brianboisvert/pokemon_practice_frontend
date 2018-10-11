@@ -11,16 +11,15 @@ class Individual extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         name: data.name,
-        image: data.sprites
+        image: data.sprites["front_default"]
       })
     );
   }
 
   render() {
-   console.log(this.state);
     return (
       <div>
-
+        <img src={this.state.image} />
       </div>
     )
   }

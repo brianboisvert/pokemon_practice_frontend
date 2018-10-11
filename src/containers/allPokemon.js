@@ -10,7 +10,7 @@ class AllPokemon extends React.Component {
   }
 
   render() {
-    const individual = this.state && this.state.results ? this.state.results.map((poke, i) => {
+    const individual = this.state && this.state.results ? this.state.results.slice(0, 50).map((poke, i) => {
       return (<Individual poke={poke} key={i} />)
     }) : undefined
 
