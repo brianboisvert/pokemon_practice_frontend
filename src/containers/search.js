@@ -8,21 +8,20 @@ class Search extends React.Component {
     selectedTypes: []
   }
 
+
   onSubmit(event) {
     event.preventDefault();
-    console.log(event.target.value)
-    // this.props
+    // console.log(this.state.selectedTypes);
+    this.props.selectedTypes(this.state.selectedTypes);
   }
 
   handleChange(value) {
-      // console.log(value[0]);
     this.setState({
       selectedTypes: value.map(type => type["value"])
     })
   }
 
   render() {
-console.log(this.state);
     const pokeTypes = this.props.types.flat(2).map(type => type["type"]["name"]).sort()
     let uniqueTypes = [...new Set(pokeTypes)]
     let options = uniqueTypes.map((type) => {
@@ -30,7 +29,7 @@ console.log(this.state);
     })
 
     return(
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit.bind(this)}>
         <Select
           options={options}
           closeMenuOnSelect={false}

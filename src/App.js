@@ -32,6 +32,7 @@ class App extends Component {
     this.setState({
       types: [...this.state.types, types]
     })
+
   }
 
   selectedTypes(types) {
@@ -46,7 +47,7 @@ class App extends Component {
         <div className="header">
           <img className="logo" src="/logo.png" alt="pokemon logo" />
           <BeginButton showPokemon={this.showPokemon.bind(this)} />
-          {this.state.showPokemon ? <Search allPokemon={this.state.allPokemon} types={this.state.types} selectedTypes={this.state.selectedTypes} /> : null }
+          {this.state.showPokemon ? <Search allPokemon={this.state.allPokemon} types={this.state.types} selectedTypes={this.selectedTypes.bind(this)} /> : null }
         </div>
         {this.state.showPokemon ? <AllPokemon allPokemon={this.state.allPokemon} findTypes={this.findTypes.bind(this)} /> : null }
       </div>
